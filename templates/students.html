@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block header %}Students{% endblock %}
+
+{% block content %}
+<div class="action-bar" style="margin-bottom: 1rem;">
+    <!-- Students are added via the Join Sport page -->
+    <p style="color: var(--text-muted); font-style: italic;">Note: Students are automatically added when they join a
+        sport.</p>
+</div>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student['id'] }}</td>
+                <td>{{ student['name'] }}</td>
+                <td>{{ student['roll_no'] }}</td>
+                <td>{{ student['grade'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

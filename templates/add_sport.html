@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block header %}Add Sport{% endblock %}
+
+{% block content %}
+<form method="post" class="form-card">
+    <div class="form-group">
+        <label for="name">Sport Name</label>
+        <input name="name" id="name" required placeholder="Ex: Basketball">
+    </div>
+    <div class="form-group">
+        <label for="coach">Coach Name</label>
+        <input name="coach" id="coach" required placeholder="Ex: Coach Carter">
+    </div>
+    <div class="form-group">
+        <label for="image_url">Image URL</label>
+        <input name="image_url" id="image_url" placeholder="https://example.com/image.jpg">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input name="description" id="description" placeholder="Short description of the sport">
+    </div>
+    <button type="submit" class="btn btn-primary" style="width: 100%;">Add Sport</button>
+</form>
+{% endblock %}

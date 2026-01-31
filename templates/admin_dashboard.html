@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block header %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-grid">
+    <div class="card">
+        <h2>Registered Students</h2>
+        <div class="count">{{ student_count }}</div>
+        <a href="{{ url_for('admin_students') }}" class="btn">View Students</a>
+    </div>
+
+    <div class="card">
+        <h2>Active Sports</h2>
+        <div class="count">{{ sport_count }}</div>
+        <a href="{{ url_for('admin_sports') }}" class="btn">Manage Sports</a>
+    </div>
+
+    <div class="card">
+        <h2>Total Enrollments</h2>
+        <div class="count">{{ enrollment_count }}</div>
+        <a href="{{ url_for('admin_enrollments') }}" class="btn">Manage Enrollments</a>
+    </div>
+</div>
+{% endblock %}

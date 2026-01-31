@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block header %}Sports{% endblock %}
+
+{% block content %}
+<div class="action-bar" style="margin-bottom: 1rem; text-align: right;">
+    <a href="{{ url_for('add_sport') }}" class="btn">Add New Sport</a>
+</div>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Coach</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sport in sports %}
+            <tr>
+                <td>{{ sport['id'] }}</td>
+                <td>{{ sport['name'] }}</td>
+                <td>{{ sport['coach'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

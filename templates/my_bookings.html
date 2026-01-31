@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block header %}My Bookings{% endblock %}
+
+{% block content %}
+<div class="form-card" style="margin-bottom: 3rem;">
+    <h2 style="text-align: center; margin-top: 0;">Check Your Enrollments</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Enter your Roll Number to see your
+        active sports bookings.</p>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="roll_no">Roll Number</label>
+            <input name="roll_no" id="roll_no" required placeholder="Ex: S12345"
+                style="text-align: center; font-size: 1.2rem; letter-spacing: 1px;">
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">Find My Bookings</button>
+    </form>
+</div>
+
+{% if student %}
+<div style="text-align: center; margin-bottom: 2rem;">
+    <h3>Welcome back, <span style="color: var(--primary-color);">{{ student['name'] }}</span>!</h3>
+</div>
+
+{% if bookings %}
+<div class="sports-grid">
+    {% for booking in bookings %}
+    <div class="sport-card">
+        <div class="card-image-container">
+            {% if booking['image_url'] %}
+            <img src="{{ booking['image_url'] }}" alt="{{ booking['sport_name'] }}" class="card-image">
+            {% else %}
+            <div
+                style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #e0e0e0; color: #999;">
+                {{ booking['sport_name'] }}
+            </div>
+            {% endif %}
+        </div>
+
+        <h3 style="margin: 0.5rem 0 0 0;">{{ booking['sport_name'] }}</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Coach: {{ booking['coach'] }}</p>
+
+        <div
+            style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color); color: var(--success-color); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Confirmed
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Enrolled on: {{
+            booking['date_enrolled'] }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div
+    style="text-align: center; padding: 2rem; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border-color);">
+    <p>You haven't joined any sports yet.</p>
+    <a href="{{ url_for('index') }}" class="btn" style="margin-top: 1rem;">Browse Sports</a>
+</div>
+{% endif %}
+{% endif %}
+
+{% endblock %}
