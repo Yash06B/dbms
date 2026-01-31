@@ -1,8 +1,8 @@
 __pycache__/
 *.pyc
-instance/
+# instance/  <-- Commented out to allow DB upload for demo
 .pytest_cache/
 .venv/
 env/
 venv/
-*.db
+# *.db       <-- Commented out to allow DB upload for demo
